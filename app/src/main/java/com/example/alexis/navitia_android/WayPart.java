@@ -2,7 +2,7 @@ package com.example.alexis.navitia_android;
 
 /**
  * @author Alexis Robin
- * @version 0.5
+ * @version 0.5.1
  * Licensed under the Apache2 license
  */
 public abstract class WayPart {
@@ -18,6 +18,17 @@ public abstract class WayPart {
     private int duration;
 
     private GeoJSON geoJSON;
+
+    protected WayPart(String type, double co2Emission, String departureDateTime, String arrivalDateTime, int duration){
+        this.type = type;
+        this.co2Emission = co2Emission;
+        this.departureDateTime = departureDateTime;
+        this.arrivalDateTime = arrivalDateTime;
+        this.duration = duration;
+        this.from = null;
+        this.to = null;
+        this.geoJSON = null;
+    }
 
     protected WayPart(String type, Address from, Address to, double co2Emission, String departureDateTime, String arrivalDateTime, int duration, GeoJSON geoJSON){
         this.type = type;
@@ -61,6 +72,5 @@ public abstract class WayPart {
     public GeoJSON getGeoJSON() {
         return geoJSON;
     }
-
 
 }
