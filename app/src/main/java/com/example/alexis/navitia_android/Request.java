@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 /**
  * @author Alexis Robin
- * @version 0.5
+ * @version 0.5.1
  * Licensed under the Apache2 license
  */
 public class Request {
@@ -265,6 +265,26 @@ public class Request {
             return ret;
         }
 
+        private Waiting getWaiting(JSONObject section){
+
+            Waiting ret = null;
+
+            try {
+
+                String departureDateTime = section.getString("departure_date_time");
+                String arrivalDateTime = section.getString("arrival_date_time");
+                int duration = section.getInt("duration");
+
+                ret = new Waiting(0, departureDateTime, arrivalDateTime, duration);
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            return ret;
+
+        }
+
         private Walking getWalking(JSONObject section){
 
             Walking ret = null;
@@ -357,18 +377,20 @@ public class Request {
                     ret = getWalking(section);
 
                 } else if(type.equals("public_transport")){
+
                     ret = getBus(section);
+
+                } else if(type.equals("waiting")){
+
+                    ret = getWaiting(section);
+
                 }
 
             } catch (JSONException e) {
                 e.printStackTrace();
             }
 
-            if(ret != null){
-                Log.d("WayPart",""+ ret.getFrom().getLongitude());
-            }
-
-            // Log.d("way",""+ ret.getType());
+            Log.d("way",""+ ret.getType());
 
             return ret;
 
