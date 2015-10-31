@@ -1,8 +1,10 @@
 package com.example.alexis.navitia_android;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * @author Alexis Robin
- * @version 0.5.1
+ * @version 0.6
  * Licensed under the Apache2 license
  */
 public abstract class WayPart {
@@ -65,12 +67,27 @@ public abstract class WayPart {
         return duration;
     }
 
+    public void setDuration(int duration) {
+         this.duration = duration;
+    }
+
     public String getArrivalDateTime() {
         return arrivalDateTime;
     }
 
     public GeoJSON getGeoJSON() {
         return geoJSON;
+    }
+
+    public void updateDuration(Coordinate c){
+        double fromLat = this.getFrom().getLatitude();
+        double fromLon = this.getFrom().getLongitude();
+        double toLat = this.getTo().getLatitude();
+        double toLon = this.getTo().getLongitude();
+
+        double distanceTotale = DataConverter.distance(fromLat, fromLon, toLat, toLon, "K");
+        double distanceParcourue = DataConverter.distance(fromLat, fromLon, c.getLatitude(), c.getLongitude(), "K");
+        this.duration = DataConverter.tempsRestant(distanceTotale, distanceParcourue, this.duration);
     }
 
 }

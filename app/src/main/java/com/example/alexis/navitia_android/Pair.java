@@ -1,7 +1,9 @@
 package com.example.alexis.navitia_android;
 
 /**
- * Created by antoine on 8/20/15.
+ * @author Alexis Robin
+ * @version 0.6
+ * Licensed under the Apache2 license
  */
 public class Pair implements Comparable<Pair> {
 

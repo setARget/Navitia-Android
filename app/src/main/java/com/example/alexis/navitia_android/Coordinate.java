@@ -5,7 +5,7 @@ import android.os.Parcelable;
 
 /**
  * @author Alexis Robin
- * @version 0.5
+ * @version 0.6
  * Licensed under the Apache2 license
  */
 public class Coordinate implements Parcelable {

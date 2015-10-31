@@ -4,7 +4,7 @@ import android.os.Parcel;
 
 /**
  * @author Alexis Robin
- * @version 0.5
+ * @version 0.6
  * Licensed under the Apache2 license
  */
 public class Stop extends Address {
@@ -23,6 +23,11 @@ public class Stop extends Address {
 
     public String getStopId() {
         return stopId;
+    }
+
+    @Override
+    public String toString(){
+        return "arrêt " + super.toString();
     }
 
     @Override
