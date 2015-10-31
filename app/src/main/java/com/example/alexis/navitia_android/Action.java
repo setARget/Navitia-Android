@@ -1,8 +1,10 @@
 package com.example.alexis.navitia_android;
 
 /**
-* Created by antoine on 8/19/15.
-        */
+ * @author Alexis Robin
+ * @version 0.6
+ * Licensed under the Apache2 license
+ */
 public interface Action<T> {
     public void action(T e);
 }

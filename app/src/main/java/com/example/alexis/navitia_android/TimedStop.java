@@ -4,7 +4,7 @@ import android.os.Parcel;
 
 /**
  * @author Alexis Robin
- * @version 0.5
+ * @version 0.6
  * Licensed under the Apache2 license
  */
 public class TimedStop extends Stop {
@@ -31,6 +31,12 @@ public class TimedStop extends Stop {
     public String getDeparture_date_time() {
         return departure_date_time;
     }
+
+    @Override
+    public String toString(){
+        return "arrêt " + super.toString();
+    }
+
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {

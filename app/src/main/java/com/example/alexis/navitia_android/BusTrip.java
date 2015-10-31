@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 /**
  * @author Alexis Robin
- * @version 0.5
+ * @version 0.6
  * Licensed under the Apache2 license
  */
 public class BusTrip extends WayPart {
@@ -30,5 +30,10 @@ public class BusTrip extends WayPart {
 
     public ArrayList<TimedStop> getStops() {
         return stops;
+    }
+
+    @Override
+    public String toString(){
+        return "Prendre la " + this.getRoute().toString() + " et descendre à " + this.getTo().toString();
     }
 }

@@ -2,7 +2,7 @@ package com.example.alexis.navitia_android;
 
 /**
  * @author Alexis Robin
- * @version 0.5
+ * @version 0.6
  * Licensed under the Apache2 license
  */
 public class GeoJSON {

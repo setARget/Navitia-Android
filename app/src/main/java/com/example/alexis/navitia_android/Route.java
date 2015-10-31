@@ -2,7 +2,7 @@ package com.example.alexis.navitia_android;
 
 /**
  * @author Alexis Robin
- * @version 0.5
+ * @version 0.6
  * Licensed under the Apache2 license
  */
 public class Route {
@@ -28,5 +28,10 @@ public class Route {
 
     public Line getLine() {
         return line;
+    }
+
+    @Override
+    public String toString(){
+        return this.getLine().toString() + " direction " + this.name;
     }
 }
