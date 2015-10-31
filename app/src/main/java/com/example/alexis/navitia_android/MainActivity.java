@@ -2,21 +2,13 @@ package com.example.alexis.navitia_android;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
-/**
- * @author Alexis Robin
- * @version 0.6
- * Licensed under the Apache2 license
- */
 public class MainActivity extends AppCompatActivity {
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,21 +16,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         ArrayList<Pair> pairs = new ArrayList<>();
-        pairs.add(new Pair("from", "-1.560425;47.205066"));
-        pairs.add(new Pair("to", "-1.518612;47.282206"));
-        pairs.add(new Pair("datetime", "20151031T0800"));
+        pairs.add(new Pair("from", "-1.660645;48.127088"));
+        pairs.add(new Pair("to", "-1.673421;48.112963"));
+        pairs.add(new Pair("datetime", "20150826T0800"));
 
         Request.getWays(new Action<Way>() {
 
                             @Override
                             public void action(Way e) {
                                 Toast.makeText(MainActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
-                                Log.d("Way label", e.getLabel());
-                                Log.d("Way", e.toString());
-
-                                Log.d("oldDuration","" + e.getDuration());
-                                e.updateDuration(new Coordinate(47.233626, -1.534651));
-                                Log.d("NewDuration","" + e.getDuration());
                             }
 
                         }, pairs);

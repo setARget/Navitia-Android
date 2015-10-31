@@ -5,9 +5,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 /**
- * @author Alexis Robin
- * @version 0.6
- * Licensed under the Apache2 license
+ * Created by antoine on 8/22/15.
  */
 public class Address implements Parcelable {
 
@@ -72,11 +70,6 @@ public class Address implements Parcelable {
 
     public void setLongitude(double lon){
         this.lon = lon;
-    }
-
-    @Override
-    public String toString(){
-        return this.name;
     }
 
     @Override

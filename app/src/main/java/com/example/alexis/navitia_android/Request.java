@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 /**
  * @author Alexis Robin
- * @version 0.6
+ * @version 0.5.1
  * Licensed under the Apache2 license
  */
 public class Request {
@@ -113,14 +113,10 @@ public class Request {
                             JSONArray sections = journey.getJSONArray("sections");
                             int nbSections = sections.length();
 
-                            WayPart tmpWayPart = null;
                             for (int j = 0; j < nbSections; j++) {
 
                                 JSONObject section = sections.getJSONObject(j);
-                                tmpWayPart = getWayPart(section);
-
-                                if(tmpWayPart != null)
-                                    parts.add(tmpWayPart);
+                                parts.add(getWayPart(section));
 
                             }
 
@@ -317,34 +313,6 @@ public class Request {
 
         }
 
-        private Transfer getTransfer(JSONObject section){
-
-            Transfer ret = null;
-
-            try {
-
-                JSONObject f = section.getJSONObject("from");
-                JSONObject t = section.getJSONObject("to");
-                JSONObject g = section.getJSONObject("geojson");
-
-                Address from = getAddress(f);
-                Address to = getAddress(t);
-                GeoJSON geoJSON = getGeoJSON(g);
-
-                String departureDateTime = section.getString("departure_date_time");
-                String arrivalDateTime = section.getString("arrival_date_time");
-                int duration = section.getInt("duration");
-
-                ret = new Transfer(from, to, 0, departureDateTime, arrivalDateTime, duration, geoJSON);
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-            return ret;
-
-        }
-
         private BusTrip getBus(JSONObject section){
 
             BusTrip ret = null;
@@ -416,15 +384,13 @@ public class Request {
 
                     ret = getWaiting(section);
 
-                } else if(type.equals("transfer")){
-
-                    ret = getTransfer(section);
-
                 }
 
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+
+            Log.d("way",""+ ret.getType());
 
             return ret;
 
